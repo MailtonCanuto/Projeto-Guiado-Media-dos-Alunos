@@ -3,17 +3,21 @@
 // initialize variables - graded assignments 
 int currentAssignments = 5;
 
-int[] sophiaScores = new int[] { 90, 86, 87, 98, 100 };
-int[] andrewScores = new int[] { 92, 89, 81, 96, 90 };
-int[] emmaScores = new int[] { 90, 85, 87, 98, 68 };
-int[] loganScores = new int[] { 90, 95, 87, 88, 96 };
+int[] sophiaScores = new int[] { 90, 86, 87, 98, 100, 94, 90 };
+int[] andrewScores = new int[] { 92, 89, 81, 96, 90, 89 };
+int[] emmaScores = new int[] { 90, 85, 87, 98, 68, 89, 89, 89 };
+int[] loganScores = new int[] { 90, 95, 87, 88, 96, 96 };
+int[] beckyScores = new int[] { 92, 91, 90, 91, 92, 92, 92 };
+int[] chrisScores = new int[] { 84, 86, 88, 90, 92, 94, 96, 98 };
+int[] ericScores = new int[] { 80, 90, 100, 80, 90, 100, 80, 90 };
+int[] gregorScores = new int[] { 91, 91, 91, 91, 91, 91, 91 };
 
-string[] studentNames = new string[] { "Sophia", "Andrew", "Emma", "Logan" };
+string[] studentNames = new string[] { "Sophia", "Andrew", "Emma", "Logan", "Becky", "Chris", "Eric", "Gregor" };
 
-Console.WriteLine("Student\t\tGrade\n");
+//Display na tela
+Console.WriteLine("Student\t\tExam Score\tOverall\tGrade\tExtra Credit\n");
 
 // Calculando a Média
-
 int[] studentScores = new int[10];
 
 foreach (string name in studentNames)
@@ -21,14 +25,14 @@ foreach (string name in studentNames)
     string currentStudent = name;
 
     if (currentStudent == "Sophia")
-        {
-            studentScores = sophiaScores;
-        }
+    {
+        studentScores = sophiaScores;
+    }
 
     else if (currentStudent == "Andrew")
-        {
-            studentScores = andrewScores;
-        }
+    {
+        studentScores = andrewScores;
+    }
 
     else if (currentStudent == "Emma")
     {
@@ -40,16 +44,62 @@ foreach (string name in studentNames)
         studentScores = loganScores;
     }
 
+    else if (currentStudent == "Becky")
+    {
+        studentScores = beckyScores;
+    }
+
+    else if (currentStudent == "Chris")
+    {
+        studentScores = chrisScores;
+    }
+
+    else if (currentStudent == "Eric")
+    {
+        studentScores = ericScores;
+    }
+
+    else if (currentStudent == "Gregor")
+    {
+        studentScores = gregorScores;
+    }
+
     int sumAssignmentScores = 0;
 
     decimal currentStudentGrade = 0;
+    decimal mediaExameScore = 0;
+    decimal mediaExtraCredit = 0;
+    int diference = 0;
 
+    //Realizando a soma das notas
+
+    int gradedAssignments = 0;
+    int examScore = 0;
+    int extraCredit = 0;
+    
     foreach (int score in studentScores)
-        {
+    {
+        gradedAssignments++;
+
+        if (gradedAssignments <= currentAssignments)
+               
+        {   
             sumAssignmentScores += score;
+            examScore += score;
+        }
+            
+        else
+        {
+            sumAssignmentScores += (score / 10);
+            extraCredit += (score / 10);
         }
 
+    }
+    //Calculando a Média
     currentStudentGrade = (decimal)sumAssignmentScores / currentAssignments;
+    mediaExameScore = (decimal)examScore / currentAssignments;
+    mediaExtraCredit = (decimal)extraCredit / currentAssignments;
+    diference = (int)mediaExameScore;
 
     // Selecionando a Letra da Nota
     string currentStudentLetterGrade = "";
@@ -109,7 +159,7 @@ foreach (string name in studentNames)
 
     
     //Imprimindo o resultado
-    Console.WriteLine($"{name}:\t\t{currentStudentGrade} \t {currentStudentLetterGrade}");
+    Console.WriteLine($"{name}:\t\t{mediaExameScore}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}\t{diference}({mediaExtraCredit})");
 }
 
 
